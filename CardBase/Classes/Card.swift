@@ -9,14 +9,14 @@
 import Foundation
 
 enum Rarity {
-    case Common, Uncommon, Rare, MythicRare, Land, Special, Promo, Bonus
+    case Common, Uncommon, Rare, MythicRare, Land, Special, Token, Promo, Bonus
 }
 
 class CardType {
     var name:String?
 }
 
-class Card {
+class BaseCard {
     var name:String?
     var manaSymbols:[ManaSymbol]?
     
@@ -38,21 +38,24 @@ class Card {
     var power:Int?
     var toughness:Int?
     
+    var oracleText:String?
+}
+
+class SetCard : BaseCard {
     var block:CardBlock?
     var expansion:CardSet?
     var cardNumber:Int?
     
     // Art info
     var imageName:String?
-    var backgroundImageName:String?
+    var frameImageName:String?
     
-    var markImage:String?
+    var markImage:String?   // Guild watermark
     
     var artist:String?
     
     var fullCardImageName:String?
     
-    // Oracle text
     var rulesText:String?
     
     var flavorText:String?

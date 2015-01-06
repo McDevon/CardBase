@@ -14,6 +14,7 @@ class ViewController: NSViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        testCode()
     }
 
     override var representedObject: AnyObject? {
@@ -22,6 +23,27 @@ class ViewController: NSViewController {
         }
     }
 
+    func testCode() {
+        var ta = ManaSymbol()
+        ta.value = .Colorless(2)
+        ta.alternateValue = .Green
+        
+        println("Value: \(ta.abbreviation())")
+        
+        var cs = ManaSymbol()
+        cs.value = .Blue
+        
+        println("Value: \(cs.abbreviation())")
+        
+        var cn = ManaSymbol()
+        cn.value = .White
+        cn.alternateValue = .Blue
+        
+        println("Value: \(cn.abbreviation())")
+        
+        println("Value: \(ManaSymbol().abbreviation())")
+        
+    }
 
 }
 

@@ -19,6 +19,23 @@ enum ManaColor {
                 return 1
         }
     }
+    
+    func symbol() -> String {
+        switch self {
+        case .Colorless(let value):
+            return String(value)
+        case .White:
+            return "W"
+        case .Blue:
+            return "U"
+        case .Black:
+            return "B"
+        case .Red:
+            return "R"
+        case .Green:
+            return "G"
+        }
+    }
 }
 
 class ManaSymbol {
@@ -32,4 +49,11 @@ class ManaSymbol {
             return value.cost()
         }
     }
+    
+    func abbreviation() -> String {
+        return "{" + value.symbol() + (alternateValue != nil ? "/" + alternateValue!.symbol() + "}" : "}")
+    }
+    
+    // Default initializer for the compiler?
+    init() {}
 }
