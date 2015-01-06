@@ -24,24 +24,36 @@ class ViewController: NSViewController {
     }
 
     func testCode() {
-        var ta = ManaSymbol()
-        ta.value = .Colorless(2)
-        ta.alternateValue = .Green
+        
+        /*
+            Testing with mana symbols
+        */
+        
+        var ta = ManaSymbol(value: .Colorless(2), alternate: .Green)
         
         println("Value: \(ta.abbreviation())")
         
-        var cs = ManaSymbol()
-        cs.value = .Blue
+        let cs = ManaSymbol(value: .Blue)
         
         println("Value: \(cs.abbreviation())")
         
-        var cn = ManaSymbol()
-        cn.value = .White
-        cn.alternateValue = .Blue
+        let cn = ManaSymbol(value: .White, alternate: .Blue)
         
         println("Value: \(cn.abbreviation())")
         
         println("Value: \(ManaSymbol().abbreviation())")
+        
+        /*
+            Testing with cards
+        */
+        
+        var tower = BaseCard()
+        tower.name = "Tower Above"
+        tower.manaSymbols = [ManaSymbol(value: .Colorless(2), alternate: .Green),
+                             ManaSymbol(value: .Colorless(2), alternate: .Green),
+                             ManaSymbol(value: .Colorless(2), alternate: .Green)]
+        
+        println("\(tower.name) cost: \(tower.manaCost) CMC: \(tower.convertedManaCost)")
         
     }
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ManaColor {
+public enum ManaColor {
     case Colorless(Int), White, Blue, Black, Red, Green
     
     func cost() -> Int {
@@ -38,7 +38,7 @@ enum ManaColor {
     }
 }
 
-class ManaSymbol {
+public class ManaSymbol {
     var value:ManaColor = .Colorless(0)
     var alternateValue:ManaColor?
     
@@ -54,6 +54,12 @@ class ManaSymbol {
         return "{" + value.symbol() + (alternateValue != nil ? "/" + alternateValue!.symbol() + "}" : "}")
     }
     
-    // Default initializer for the compiler?
-    init() {}
+    
+    public init(value val:ManaColor, alternate alt:ManaColor) {
+        value = val
+        var altVal:ManaColor? = alt
+        alternateValue = altVal
+    }
+    public init (value val:ManaColor) {value = val}
+    public convenience init () {self.init(value: .Colorless(0))}
 }

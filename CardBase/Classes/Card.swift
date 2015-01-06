@@ -14,10 +14,12 @@ enum Rarity {
 
 class CardType {
     var name:String?
+    
+    init() {}
 }
 
 class BaseCard {
-    var name:String?
+    var name:String = ""
     var manaSymbols:[ManaSymbol]?
     
     var convertedManaCost:Int {
@@ -30,6 +32,16 @@ class BaseCard {
         return cost
     }
     
+    var manaCost:String {
+        var cost = ""
+        
+        manaSymbols?.map {
+            cost += $0.abbreviation()
+        }
+        
+        return cost
+    }
+    
     // Type info
     var types:[CardType]?
     var subTypes:[String]?
@@ -39,6 +51,9 @@ class BaseCard {
     var toughness:Int?
     
     var oracleText:String?
+    
+    // Default initializer
+    init() {}
 }
 
 class SetCard : BaseCard {
@@ -59,4 +74,7 @@ class SetCard : BaseCard {
     var rulesText:String?
     
     var flavorText:String?
+    
+    // Default initializer
+    override init() {super.init()}
 }
